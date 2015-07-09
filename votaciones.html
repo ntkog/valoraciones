@@ -1,0 +1,62 @@
+<head>
+  <title>Leaderboard</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+
+<body>
+  <div class="header">
+    <div class="container">
+      <h2>Leaderboard</h2>
+      {{> navbar}}
+    </div>
+  </div>
+  <div class="container">
+    {{> leaderboard}}
+  </div>
+</body>
+
+<template name="navbar">
+  <form class="form-inline">
+    <div class="btn-group" data-toggle="buttons-radio">
+      <button class="sort_by_score btn btn-small {{#if sort_by_is 'score'}}active{{/if}}" type="button">Sort by Score</button>
+      <button class="sort_by_name btn btn-small {{#if sort_by_is 'name'}}active{{/if}}" type="button">Sort by Name</button>
+    </div>
+    <button class="randomize btn btn-warning btn-small" type="button"><i class="icon-random icon-white"></i> Randomize</button>
+    <button class="reset btn btn-danger btn-small" type="button"><i class="icon-refresh icon-white"></i> Reset</button>
+    <div class="input-append">
+      <input class="player_name input-medium input-font-small" type="text" placeholder="New player"/>
+      <button class="add_user btn btn-small" type="button">Add Player</button>
+    </div>
+    <a class="btn btn-link btn-small" href="https://github.com/sebastienbarre/meteor-leaderboard"><i class="icon-question-sign"></i> Source</a>
+  </form>
+</template>
+
+<template name="leaderboard">
+  <table class="table table-striped table-hover">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th style="width: 60px">Score</th>
+        <th style="width: 20px"></th>
+        <th style="width: 20px"></th>
+        <th style="width: 20px"></th>
+      </tr>
+    </thead>
+    <tbody>
+      {{#each players}}
+      {{> player}}
+      {{/each}}
+    </tbody>
+  </table>
+</template>
+
+<template name="player">
+  <tr class="player {{#if selected}}info{{/if}}">
+    <td class="name">{{name}}</td>
+    <td class="score"><span class="badge {{#if is_max}}badge-success{{/if}} {{#if is_min}}badge-warning{{/if}}">{{score}}</span></td>
+    <td><i class="increment icon-thumbs-up" rel="tooltip" data-original-title="Add five points to the score"></i></td>
+    <td><i class="decrement icon-thumbs-down" rel="tooltip" data-original-title="Subtract five points to the score"></i></td>
+    <td><i class="remove icon-remove" rel="tooltip" data-original-title="Delete player"></i></td>
+  </tr>
+</template>
+
