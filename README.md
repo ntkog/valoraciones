@@ -1,5 +1,6 @@
-# valoraciones
-Basado en meteor-leaderboard , pero con un poco más de funcionalidad
+# Talks ranking for codemotion
+
+Based on meteor-leaderboard. Just a quick way to get real-time voting from your meetup-community
 
 # Installation
 - install meteor, if you don't have it
