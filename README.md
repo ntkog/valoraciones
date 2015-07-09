@@ -15,7 +15,15 @@ cd valoraciones
 ```
 
 # Configuration
-Just change the urlname of your meetup community in server/bootstrap.js
+
+First of all, you have to create an OAuth Consumer for your meetup App :
+```bash
+https://secure.meetup.com/meetup_api/oauth_consumers/
+```
+
+Once you have *key* and *secret* you are good to go!
+
+The last step is changing the urlname of your meetup community in server/bootstrap.js
 
 # Run
 
@@ -23,3 +31,4 @@ Just change the urlname of your meetup community in server/bootstrap.js
 meteor
 ```
 
+Enjoy!
