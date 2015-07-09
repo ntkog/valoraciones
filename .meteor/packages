@@ -5,10 +5,10 @@
 # but you can also edit it by hand.
 
 meteor-platform
-autopublish
-insecure
 less
 amplify
 bootstrap
 accounts-ui
 accounts-meetup
+alanning:roles
+service-configuration
