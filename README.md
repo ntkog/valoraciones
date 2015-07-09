@@ -23,6 +23,17 @@ https://secure.meetup.com/meetup_api/oauth_consumers/
 
 Once you have *key* and *secret* you are good to go!
 
+WARN! You have to fill a Redirect URI in your OAuth Meetup Consumer. If you are testing locally fill in with 
+```bash
+http://localhost:3000
+```
+
+Once you are ready to deploy in your server, be sure you set an environment variable like the following example.( Do it before you run meteor )
+```bash
+export ROOT_URL=http://YOUR_IP_OR_DOMAIN
+```
+and change *Redirect URI* on your OAuth Meetup Consumer Details.
+
 The last step is changing the urlname of your meetup community in server/bootstrap.js
 
 # Run
