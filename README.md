@@ -34,12 +34,18 @@ export ROOT_URL=http://YOUR_IP_OR_DOMAIN
 ```
 and change *Redirect URI* on your OAuth Meetup Consumer Details.
 
-The last step is changing the urlname of your meetup community in server/meetup.js
+The last step is changing the urlname of your meetup community in server/meetup.js and add your logo in /public folder ( Name it logo.png )
+
+
 
 # Run
 
 ```bash
 meteor
 ```
+
+# TODO
+
+Expose a module/function that lets organizers do their own Vote system.
 
 Enjoy!
