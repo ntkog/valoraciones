@@ -7,6 +7,9 @@
   <div class="header">
     <div class="container">
       <h2>Votaciones para charlas de Codemotion</h2>
+      {{#if isLogged }}
+        <img src="{{ avatar }}" class="avatar" alt="You">
+      {{/if}}
       {{> loginButtons}}
       
     </div>

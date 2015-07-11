@@ -34,7 +34,7 @@ export ROOT_URL=http://YOUR_IP_OR_DOMAIN
 ```
 and change *Redirect URI* on your OAuth Meetup Consumer Details.
 
-The last step is changing the urlname of your meetup community in server/bootstrap.js
+The last step is changing the urlname of your meetup community in server/meetup.js
 
 # Run
 
