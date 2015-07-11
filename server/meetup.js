@@ -22,7 +22,7 @@ Accounts.onCreateUser(function(options, user){
         return {
           name : prof.name,
           photo : prof.photo_url,
-          rol : _.contains(["Organizer","Assistant Organizer","Co-organizer","Event Organizer"],prof.role) ? "admin" : "member"
+          role : _.contains(["Organizer","Assistant Organizer","Co-organizer","Event Organizer"],prof.role) ? "admin" : "member"
         };
       })[0];
 

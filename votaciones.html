@@ -9,6 +9,7 @@
       <h2>Votaciones para charlas de Codemotion</h2>
       {{> navbar}}
       {{> loginButtons}}
+      
     </div>
   </div>
   <div class="container">
@@ -17,15 +18,16 @@
 </body>
 
 <template name="navbar">
-  <form class="form-inline">
-    <div class="btn-group" data-toggle="buttons-radio">
-      <button class="sort_by_score btn btn-small {{#if sort_by_is 'score'}}active{{/if}}" type="button">Sort by Score</button>
-      <button class="sort_by_name btn btn-small {{#if sort_by_is 'name'}}active{{/if}}" type="button">Sort by Name</button>
-    </div>
+  
+  {{# if isAdmin }}
+    <section class="admin">
+      {{#if notImportedYet}}
+        <input type="file" id="csv-file" name="files"/>
+        <button type="submit" id="import" class="btn-small">Import Talks</button>
+      {{/if}}
+    </section>
+  {{/if}}
     
-
-
-  </form>
 </template>
 
 <template name="leaderboard">
@@ -33,11 +35,17 @@
     <thead>
       <tr>
         <th>Title</th>
-        <th>Author</th>
         <th>Desc</th>
+        <th>Technologies Area</th>
+        <th>Tags</th>
+        <th>Language</th>
+        <th>Level</th>
         <th style="width: 60px">Score</th>
         <th style="width: 20px"></th>
-        <th style="width: 20px"></th>
+        {{#if isAdmin}}
+          <th>Not Related</th>
+        {{/if}}
+        
       </tr>
     </thead>
     <tbody>
@@ -51,12 +59,18 @@
 
 <template name="talk">
   <tr class="speaker {{#if selected}}info{{/if}}">
-    <td class="name">{{title}}</td>
-    <td class="name">{{author}}</td>
-    <td class="name">{{desc}}</td>
-    <td class="score"><span class="badge {{#if is_max}}badge-success{{/if}} {{#if is_min}}badge-warning{{/if}}">{{score}}</span></td>
+    <td class="name">{{Title}}</td>
+    <td class="name"><p class="justify">{{Description}}</p></td>
+    <td class="name">{{ showFormatted techs }}</td>
+    <td class="name">{{ showFormatted tags}}</td>
+    <td class="name">{{Language}}</td>
+    <td class="name">{{Level}}</td>
+    <td class="score"><span class="badge {{#if is_max}}badge-success{{/if}} {{#if is_min}}badge-warning{{/if}}">{{Votes}}</span></td>
     <td><i class="increment icon-thumbs-up" rel="tooltip" data-original-title="Add five points to the score"></i></td>
-    <td><i class="decrement icon-thumbs-down" rel="tooltip" data-original-title="Subtract five points to the score"></i></td>
+    {{#if isAdmin}}
+    <td><i class="notRelated icon-remove-sign" rel="tooltip" data-original-title="Not related with this community"></i></td>
+    {{/if}}
+    
     
   </tr>
 </template>

@@ -17,8 +17,11 @@ check@1.0.5
 ddp@1.1.0
 deps@1.0.7
 ejson@1.0.6
+evaisse:csv@0.1.4
 fastclick@1.0.3
 geojson-utils@1.0.3
+harrison:babyparse@1.0.1
+harrison:papa-parse@1.0.19
 html-tools@1.0.4
 htmljs@1.0.4
 http@1.1.0
