@@ -23,20 +23,6 @@ Template.navbar.events({
           },
           skipEmptyLines: true
       });
-   },
-   'click #sortAffinity': function (e, tmpl) {
-     if (Session.equals("affinity", true)) {
-        Session.set("affinity", false);
-     } else {
-       Session.set("affinity", true);
-     }
-   },
-   'click #sortByRank': function (e, tmpl) {
-     if (Session.equals("rank", true)) {
-        Session.set("rank", false);
-     } else {
-       Session.set("rank", true);
-     }
-   },
+   }
 
 });

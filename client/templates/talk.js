@@ -16,25 +16,3 @@ Template.talk.helpers({
 
 });
 
-
-Template.talk.events({
-  'click .increment': function () {
-    Talks.update(this._id, {$inc: {Votes: 5}});
-    return false;
-  },
-  'click': function () {
-    Session.set('selected_player', this._id);
-  },
-  'click .notRelated' : function() {
-    Meteor.call("markAsNotRelated" , this._id, function (err) {
-      if (err) {
-        console.error(err);
-      }
-    });
-  }
-});
-
-
-Template.talk.rendered = function () {
-  $(this.findAll('[rel=tooltip]')).tooltip();
-};

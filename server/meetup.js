@@ -1,4 +1,4 @@
-community = "madridjs";
+community = "HTML5-Spain";
 Accounts.onCreateUser(function(options, user){      
   var accessToken = user.services.meetup.accessToken;
   try {

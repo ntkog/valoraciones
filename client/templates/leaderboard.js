@@ -1,13 +1,41 @@
-Template.leaderboard.helpers({
-  "talks" : function() {
-    if(Meteor.userId()) {
-      //var sort_by = AmplifiedSession.get('sort_by');
-      //var sort_options = sort_by === 'name' ? {name: 1, score: 1} : {score: -1, name: 1};
-      if (Session.equals("rank",true)) {
-        return Talks.find({ affinity : true}, { sort : { Votes : -1 }});
-      } else {
-        return Talks.find({ affinity : true});
+Template.leaderboard.events({
+  'click .notRelated' : function() {
+    Meteor.call("markAsNotRelated" , this._id, function (err) {
+      if (err) {
+        console.error(err);
       }
+    });
+  }
+});
+
+Template.leaderboard.helpers({
+  "settings" : function() {
+    return {
+      collection : Talks,
+      rowsPerPage : 5,
+      showFilter : true,
+      showColumnToggles : true,
+      fields:  [
+        "Title",
+        { 
+          key : "Description",
+          label : "Description",
+          cellClass : "justify" 
+        },
+        "tags",
+        "techs",
+        "Level",
+        "Type",
+        "Language",
+        "Votes",
+        {
+          key: 'ThumbsUp',
+          label : 'ThumbsUp',
+          tmpl : Template.thumbsUp
+        
+        }
+      ]
+      
     }
   }
 });

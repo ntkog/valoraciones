@@ -7,9 +7,11 @@
 meteor-platform
 less
 amplify
-bootstrap
 accounts-ui
 accounts-meetup
 alanning:roles
 service-configuration
 evaisse:csv
+aslagle:reactive-table
+fortawesome:fontawesome
+twbs:bootstrap

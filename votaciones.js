@@ -11,6 +11,7 @@ if (Meteor.isClient) {
   // A version of Session that also store the key/value pair to local storage
   // using Amplify
   Session.set("rank", false);
+  Session.set("affinity" , true);
   Accounts.onLoginFailure(function(err){
     Session.set('displayMessage', err.reason);
   });
