@@ -1,4 +1,4 @@
-
+community = "madridjs";
 Accounts.onCreateUser(function(options, user){      
   var accessToken = user.services.meetup.accessToken;
   try {
@@ -13,6 +13,7 @@ Accounts.onCreateUser(function(options, user){
     throw error;
   }
 
+  debugger;
   var profile = 
     result.data.results
       .filter(function (prof) { 
@@ -27,6 +28,7 @@ Accounts.onCreateUser(function(options, user){
       })[0];
 
   if (profile) {
+    
     user.profile = profile;
     return user;
   } else {
