@@ -5,13 +5,17 @@
 
 <body>
   <div class="header">
-    <div class="container">
-      <h2>Votaciones para charlas de Codemotion</h2>
+    <div class="containerFlex">
+     <section class="flex-item-title">
+       <h2>Votaciones para charlas de Codemotion</h2>
+     </section>
+     <section class="flex-item-auth">
       {{#if isLogged }}
         <img src="{{ avatar }}" class="avatar" alt="You">
       {{/if}}
-      {{> loginButtons}}
-      
+      {{> loginButtons}} 
+     </section>
+     
     </div>
   </div>
   <div class="container-fluid">

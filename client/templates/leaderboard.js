@@ -33,6 +33,46 @@ Template.leaderboard.helpers({
           label : 'ThumbsUp',
           tmpl : Template.thumbsUp
         
+        },
+        {
+          key: 'Author1',
+          label : 'Author1', 
+          hidden : true
+        },
+                {
+          key: 'Author2',
+          label : 'Author2', 
+          hidden : true
+        },
+        {
+          key: 'Author3',
+          label : 'Author3', 
+          hidden : true
+        },
+        {
+          key: 'Author4',
+          label : 'Author4', 
+          hidden : true
+        },
+                {
+          key: 'DescAuthor1',
+          label : 'DescAuthor1', 
+          hidden : true
+        },
+                {
+          key: 'DescAuthor2',
+          label : 'DescAuthor2', 
+          hidden : true
+        },
+        {
+          key: 'DescAuthor3',
+          label : 'DescAuthor3', 
+          hidden : true
+        },
+        {
+          key: 'DescAuthor4',
+          label : 'DescAuthor4', 
+          hidden : true
         }
       ]
       
