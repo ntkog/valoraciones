@@ -1,8 +1,5 @@
-Template.navbar.helpers({
-  "sort_by_is" : function (sort_by) {
-    return (Session.get('sort_by') || 'score') === sort_by;
-  }
-});
+Template.navbar.helpers({});
+
 
 Template.navbar.events({
 
@@ -26,6 +23,20 @@ Template.navbar.events({
           },
           skipEmptyLines: true
       });
-   }
+   },
+   'click #sortAffinity': function (e, tmpl) {
+     if (Session.equals("affinity", true)) {
+        Session.set("affinity", false);
+     } else {
+       Session.set("affinity", true);
+     }
+   },
+   'click #sortByRank': function (e, tmpl) {
+     if (Session.equals("rank", true)) {
+        Session.set("rank", false);
+     } else {
+       Session.set("rank", true);
+     }
+   },
 
 });

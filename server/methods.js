@@ -2,7 +2,7 @@ techAffinity = ["Web", "Mobile"];
 langAffinity = ["Javascript"];
 
 function affinity (title, desc, codeLanguage, technologies) {
-  var re = /(JS|CSS|HTML|NODE|GRUNT|GULP|METEOR)/gi;
+  var re = /(JS|CSS|HTML|NODE|GRUNT|GULP|METEOR|POLYMER|COMPONENTS)/gi;
   console.log(title);
   var matchesTitle = title.match(re);
   var matchesDesc = desc.match(re);

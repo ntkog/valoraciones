@@ -12,13 +12,15 @@
       
     </div>
   </div>
-  <div class="container">
+  <div class="container-fluid">
     {{> leaderboard}}
   </div>
 </body>
 
 <template name="navbar">
   
+  <button id="sortAffinity">Related Talks</button>
+  <button id="sortByRank">Ranking</button>
   {{# if isAdmin }}
     <section class="admin">
       {{#if notImportedYet}}

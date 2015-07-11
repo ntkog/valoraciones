@@ -10,13 +10,11 @@ if (Meteor.isClient) {
 
   // A version of Session that also store the key/value pair to local storage
   // using Amplify
-
-
+  Session.set("rank", false);
   Accounts.onLoginFailure(function(err){
     Session.set('displayMessage', err.reason);
   });
   
-  Session.set("affinity", true);
   Meteor.autorun(function() {
     // Whenever this session variable changes, run this function.
     var message = Session.get('displayMessage');

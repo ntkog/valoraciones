@@ -1,3 +1,3 @@
-Meteor.publish("talks", function(affinity){
-  return Talks.find({ affinity : affinity });
+Meteor.publish("talks", function(){
+  return Talks.find();
 });
