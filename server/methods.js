@@ -15,7 +15,7 @@ function affinity (title, desc, codeLanguage, technologies) {
     return _.contains(technologies,t); 
   });
   
-  return subjectOK || langOK.length > 0;      
+  return subjectOK || langOK.length > 0 ? 1 : 0;      
 }
 
 function processCommas ( datum) {

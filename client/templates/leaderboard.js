@@ -10,12 +10,7 @@ Template.leaderboard.events({
 
 Template.leaderboard.helpers({
   "settings" : function() {
-    return {
-      collection : Talks,
-      rowsPerPage : 5,
-      showFilter : true,
-      showColumnToggles : true,
-      fields:  [
+    var fields = [
         "Title",
         { 
           key : "Description",
@@ -73,9 +68,29 @@ Template.leaderboard.helpers({
           key: 'DescAuthor4',
           label : 'DescAuthor4', 
           hidden : true
+        },
+        {
+          key: 'affinity',
+          label : 'Affinity',
+          hidden : true
         }
-      ]
-      
+      ];
+    
+      if (Meteor.user().profile.role === "admin") {
+        fields.push( {
+          key : "Not Related",
+          label : "Not Related",
+          tmpl : Template.notRelated
+        });
+      }
+    
+    return {
+      collection : Talks,
+      rowsPerPage : 5,
+      showFilter : true,
+      showColumnToggles : true,
+      fields: fields,
+      filters : ['affinity']
     }
   }
 });

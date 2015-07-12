@@ -40,11 +40,18 @@
 <template name="leaderboard">
    {{#if isLogged }}
     {{> navbar}}
-    {{> reactiveTable class="table table-bordered table-hover" settings=settings }}
+    {{> affinityFilter }}
+    {{> reactiveTable class="table table-bordered table-hover" settings=settings }}  
    {{/if}}
 </template>
 
 <template name="thumbsUp">
   <span><i class="increment fa fa-thumbs-o-up fa-3x"></i></span>
 </template>
+<template name="notRelated">
+  <span><i class="notRelated fa fa-times-circle fa-3x"></i></span>
+</template>
 
+<template name="affinityFilter">
+    <button id="btnAffinity">{{ title }}</button>
+</template>
