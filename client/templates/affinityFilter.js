@@ -6,8 +6,8 @@ Template.affinityFilter.created = function () {
 Template.affinityFilter.helpers({
   title : function() {
     return Template.instance().filter.get() === "1" 
-      ? "Related to this Community"
-      : "All";
+      ? "View All Talks"
+      : "View Related to this Community";
   }
 });
 

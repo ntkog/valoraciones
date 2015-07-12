@@ -1,4 +1,5 @@
 community = "HTML5-Spain";
+votesPerMember = 10;
 Accounts.onCreateUser(function(options, user){      
   var accessToken = user.services.meetup.accessToken;
   try {
@@ -28,7 +29,7 @@ Accounts.onCreateUser(function(options, user){
       })[0];
 
   if (profile) {
-    
+    profile.credits = votesPerMember;
     user.profile = profile;
     return user;
   } else {

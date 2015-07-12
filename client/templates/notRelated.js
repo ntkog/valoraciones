@@ -4,7 +4,7 @@ Template.notRelated.events({
     console.log("click");
     Meteor.call("markAsNotRelated" , this._id, function(err) {
       if(err) {
-        Session.set("displayMessage", err);
+        sAlert.error(err);
       }
     });
   }

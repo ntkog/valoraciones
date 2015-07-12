@@ -51,5 +51,18 @@ Meteor.methods({
     if( Meteor.user().profile.role === "admin") {
       Talks.update({ _id : talkId } , { $set : { affinity : false } });
     }
+  },
+  "voteTalk" : function (talkId, votes) {
+    
+    console.log("llego a voteTalk");
+    if( parseInt(Meteor.user().profile.credits,0) - votes >= 0) {
+        console.log("Apunto");
+        Talks.update({ _id: talkId }, {$inc: {Votes: votes}}); 
+        Meteor.users.update({ _id : Meteor.user()._id }, { $inc : { "profile.credits" : -votes } });
+    } else {
+        console.log("Error");
+      throw new Meteor.Error(503, 
+      "Too much votes. You only have:" + Meteor.user().profile.credits + " left" );              
+    }
   }
 });

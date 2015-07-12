@@ -40,18 +40,22 @@
 <template name="leaderboard">
    {{#if isLogged }}
     {{> navbar}}
+    {{> sAlert}}
     {{> affinityFilter }}
     {{> reactiveTable class="table table-bordered table-hover" settings=settings }}  
    {{/if}}
 </template>
 
 <template name="thumbsUp">
-  <span><i class="increment fa fa-thumbs-o-up fa-3x"></i></span>
+  <div class="containerFlex">
+    <input class="vote" type="number" min="0" max="10" data-talk="{{ talkId }}">
+    <span><i data-talk="{{ talkId }}" class="increment fa fa-thumbs-o-up fa-3x"></i></span>
+  </div>
 </template>
 <template name="notRelated">
   <span><i class="notRelated fa fa-times-circle fa-3x"></i></span>
 </template>
 
 <template name="affinityFilter">
-    <button id="btnAffinity">{{ title }}</button>
+    <button class="btn btn-primary" id="btnAffinity">{{ title }}</button>
 </template>
