@@ -3,7 +3,7 @@ langAffinity = ["Javascript"];
 
 
 function affinity (title, desc, codeLanguage, technologies) {
-  var re = /\b(JS|CSS|HTML|HTML5|NODE|GRUNT|GULP|METEOR|POLYMER|COMPONENTS)\b/gi;
+  var re = /\b(JS|JAVASCRIPT|CSS|CSS3|HTML|HTML5|NODE|GRUNT|GULP|METEOR|POLYMER|COMPONENTS)\b/gi;
   console.log(title);
   var matchesTitle = title.match(re);
   var matchesDesc = desc.match(re);
