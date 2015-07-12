@@ -44,6 +44,32 @@ The last step is changing the urlname of your meetup community in server/meetup.
 meteor
 ```
 
+
+# Add-ons
+
+If you want to pre-filter talks that are related with your community , take a look :
+
+```js
+function affinity (title, desc, codeLanguage, technologies) {
+  var re = /\b(JS|CSS|HTML|NODE|GRUNT|GULP|METEOR|POLYMER|COMPONENTS)\b/gi;
+  console.log(title);
+  var matchesTitle = title.match(re);
+  var matchesDesc = desc.match(re);
+  var subjectOK = matchesTitle || matchesDesc ? true : false;
+  var langOK = langAffinity.filter(function(l) { 
+    return _.contains(codeLanguage,l); 
+  });
+  var techOK = techAffinity.filter(function(t) { 
+    return _.contains(technologies,t); 
+  });
+  
+  return subjectOK || langOK.length > 0 ? 1 : 0;      
+}
+```
+
+Just add some keywords to the regex , and at import time ,it will add a field called "affinity" with the result of talks that matches in regex ( It will parse each CSV file looking for matching in "Title" and "Description" fields )
+
+
 # TODO
 
 Expose a module/function that lets organizers do their own Vote system.
