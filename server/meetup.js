@@ -1,5 +1,5 @@
 community = "HTML5-Spain";
-votesPerMember = 10;
+votesPerMember = 25;
 Accounts.onCreateUser(function(options, user){      
   var accessToken = user.services.meetup.accessToken;
   try {
