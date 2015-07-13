@@ -50,4 +50,6 @@ Expose a module/function that lets organizers do their own Vote system.
 
 Stay tunned on develop branch for the brand new additions
 
+If you want to see an example , checkout "alternative" branch
+
 Enjoy!
