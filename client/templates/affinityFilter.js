@@ -6,8 +6,8 @@ Template.affinityFilter.created = function() {
 Template.affinityFilter.helpers({
   title : function() {
     return Template.instance().filter.get() === "1" 
-      ? "View All Talks"
-      : "View Related to this Community";
+      ? "Todas las charlas"
+      : "Recomendadas en base a tecnologías afines a HTML5-Spain";
   }
 
 });
@@ -19,10 +19,11 @@ Template.affinityFilter.events({
     
     if (lastValue === "1") {
       Template.instance().filter.set("");
-      ReactiveTable.clearFilters(["byTag"]);  
+      
     } else {
        Template.instance().filter.set("1");
     }
+    ReactiveTable.clearFilters(["byTag"]);  
     
   }
 });

@@ -29,7 +29,7 @@ Accounts.onCreateUser(function(options, user){
       })[0];
 
   if (profile) {
-    
+    profile.hasVoted = false;
     user.profile = profile;
     return user;
   } else {

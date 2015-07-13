@@ -52,15 +52,19 @@ Meteor.methods({
     }
   },
   "vote" : function (votes) {
-    
-    var list = _.groupBy(votes,"talkId");
-    Object.keys(list).forEach(function (k) {
-      var currentVote = {
-        talkId : k,
-        votes : list[k].length === 1 ? list[k][0].votes : list[k][list[k].length -1].votes
-      };
-      Talks.update({ _id: currentVote.talkId }, {$inc: {Votes: currentVote.votes}}); 
-    });
+    if (Meteor.user().profile.hasVoted) {
+      throw new Meteor.Error(503, "You've already voted");
+    } else {
+      var list = _.groupBy(votes,"talkId");
+      Object.keys(list).forEach(function (k) {
+        var currentVote = {
+          talkId : k,
+          votes : list[k].length === 1 ? list[k][0].votes : list[k][list[k].length -1].votes
+        };
+        Talks.update({ _id: currentVote.talkId }, {$inc: {Votes: currentVote.votes}});
+        Meteor.users.update({ _id : Meteor.userId() },{$set : { "profile.hasVoted" : true }})
+      });
+    }
     
       
   }

@@ -10,7 +10,7 @@ Leaderboard = {};
 if (Meteor.isClient) {
 
   Accounts.onLoginFailure(function(err){
-    Session.set('displayMessage', err.reason);
+    sAlert.error(err);
   });
 
 }
