@@ -24,7 +24,9 @@
   
   <div class="container-fluid">
     {{#if isLogged }}
-      {{> leaderboard}}
+      {{#if hasVoted }}
+        {{> leaderboard}}
+      {{/if}}
     {{else}}
       {{> instructions }}
     {{/if}}
@@ -114,6 +116,7 @@
           </ol>
         </li>
         <li>Desgraciadamente , nos encantaría tener un método bien estudiado, pero lo hemos tenido que hacer deprisa y corriendo . El feedback que tengáis lo trasladaremos a la organización del CodeMotion y tomaremos nota para tratar de mejorarlo en una próxima ocasión</li>
+        <li>¿ Cómo lo habéis hecho ? -> Echa un vistazo a <a href="https://github.com/ntkog/valoraciones/tree/alternative">este repo</a></li>
       </ul>
       
     </section>

@@ -117,6 +117,7 @@ Template.leaderboard.helpers({
       multiColumnSort : true
     }
   }
+
 });
 
 Template.leaderboard.created = function () {

@@ -70,8 +70,3 @@ function affinity (title, desc, codeLanguage, technologies) {
 Just add some keywords to the regex , and at import time ,it will add a field called "affinity" with the result of talks that matches in regex ( It will parse each CSV file looking for matching in "Title" and "Description" fields )
 
 
-# TODO
-
-Expose a module/function that lets organizers do their own Vote system.
-
-Enjoy!
