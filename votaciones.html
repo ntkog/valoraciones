@@ -21,6 +21,7 @@
      
     </div>
   </div>
+  
   <div class="container-fluid">
     {{#if isLogged }}
       {{> leaderboard}}
@@ -28,6 +29,7 @@
       {{> instructions }}
     {{/if}}
   </div>
+  {{> sAlert}}
 </body>
 
 <template name="navbar">
@@ -40,27 +42,35 @@
     </section>
   {{/if}}     
 </template>
-
+<template name="ControlPanel">
+  <div class="containerFlex">
+    <div class="controlButtons">
+      {{> affinityFilter }}
+      {{> byTagFilter }}
+    </div>
+    <div class="controlVote">
+      <span><i class="vote fa fa-thumbs-o-up fa-5x"></i></span>
+    </div>
+  </div>
+  
+</template>
 <template name="leaderboard">
    {{#if isLogged }}
     {{> navbar}}
-
-    {{> sAlert}}
-    {{> affinityFilter }}
-    {{> byTagFilter }}
+    {{> ControlPanel }}
     {{> reactiveTable class="table table-bordered table-hover" settings=settings }}  
    {{/if}}
 </template>
 
 <template name="thumbsUp">
-    <input class="vote" type="number" min="0" max="10" data-talk="{{ talkId }}">
+    <input class="vote increment" type="number" min="0" max="10" data-talk="{{ talkId }}">
 </template>
 <template name="notRelated">
   <span><i class="notRelated fa fa-times-circle fa-3x"></i></span>
 </template>
 
 <template name="affinityFilter">
-    <button class="btn btn-primary btn-sm" id="btnAffinity">{{ title }}</button>
+    <button class="btn btn-primary btn-sm clickable" id="btnAffinity">{{ title }} {{ results }}</button>
 </template>
 <template name="byTagFilter">
     <div class="containerFlex spaced">

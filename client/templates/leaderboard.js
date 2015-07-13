@@ -120,5 +120,5 @@ Template.leaderboard.helpers({
 });
 
 Template.leaderboard.created = function () {
-  this.subscribe("talks");
+  this.subscribe("talks"); 
 };

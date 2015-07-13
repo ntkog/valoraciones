@@ -3,8 +3,7 @@ langAffinity = ["Javascript"];
 
 
 function affinity (title, desc, codeLanguage, technologies) {
-  var re = /\b(JS|JAVASCRIPT|CSS|CSS3|HTML|HTML5|NODE|GRUNT|GULP|METEOR|POLYMER|COMPONENTS)\b/gi;
-  console.log(title);
+  var re = /\b(JS|JAVASCRIPT|CSS|CSS3|HTML|HTML5|WEBGL|NODE|GRUNT|GULP|METEOR|POLYMER|COMPONENTS)\b/gi;
   var matchesTitle = title.match(re);
   var matchesDesc = desc.match(re);
   var subjectOK = matchesTitle || matchesDesc ? true : false;
@@ -52,17 +51,17 @@ Meteor.methods({
       Talks.update({ _id : talkId } , { $set : { affinity : false } });
     }
   },
-  "voteTalk" : function (talkId, votes) {
+  "vote" : function (votes) {
     
-    console.log("llego a voteTalk");
-    if( parseInt(Meteor.user().profile.credits,0) - votes >= 0) {
-        console.log("Apunto");
-        Talks.update({ _id: talkId }, {$inc: {Votes: votes}}); 
-        Meteor.users.update({ _id : Meteor.user()._id }, { $inc : { "profile.credits" : -votes } });
-    } else {
-        console.log("Error");
-      throw new Meteor.Error(503, 
-      "Too much votes. You only have:" + Meteor.user().profile.credits + " left" );              
-    }
+    var list = _.groupBy(votes,"talkId");
+    Object.keys(list).forEach(function (k) {
+      var currentVote = {
+        talkId : k,
+        votes : list[k].length === 1 ? list[k][0].votes : list[k][list[k].length -1].votes
+      };
+      Talks.update({ _id: currentVote.talkId }, {$inc: {Votes: currentVote.votes}}); 
+    });
+    
+      
   }
 });

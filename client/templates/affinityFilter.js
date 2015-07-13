@@ -1,5 +1,6 @@
 Template.affinityFilter.created = function() {
   this.filter =  new ReactiveTable.Filter('affinity', ['affinity']);
+
 }
 
 Template.affinityFilter.helpers({
@@ -8,19 +9,17 @@ Template.affinityFilter.helpers({
       ? "View All Talks"
       : "View Related to this Community";
   }
+
 });
 
 
 Template.affinityFilter.events({
-  "click #btnAffinity" : function (e, tmpl) {
-    //
-    debugger;
+  "click #btnAffinity" : function (e, tmpl) {    
     var lastValue = Template.instance().filter.get();
     
     if (lastValue === "1") {
       Template.instance().filter.set("");
-      
-      
+      ReactiveTable.clearFilters(["byTag"]);  
     } else {
        Template.instance().filter.set("1");
     }

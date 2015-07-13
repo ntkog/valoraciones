@@ -6,6 +6,7 @@ Template.byTagFilter.helpers({
   tags : function() {  
     return "JAVASCRIPT|CSS|HTML5|NODE|METEOR|WEB COMPONENTS|WEBGL".split("|");
   }
+
 });
 
 
@@ -32,6 +33,9 @@ Template.byTagFilter.events({
         break;
       case 'WEBGL' :
         re = /\b(WEBGL|WEB GL)\b/i;
+        break;
+      case 'METEOR' :
+        re = /\b(METEOR|METEOR.JS)\b/i;
         break;
     }
     Template.instance().filter.set({ $regex :  re });
