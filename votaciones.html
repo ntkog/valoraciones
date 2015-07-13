@@ -23,15 +23,17 @@
   </div>
   
   <div class="container-fluid">
+    {{> sAlert}}
     {{#if isLogged }}
-      {{#if hasVoted }}
-        {{> leaderboard}}
+      {{#if hasNotVoted }}
+        {{> leaderboard}}       
       {{/if}}
+      
     {{else}}
       {{> instructions }}
     {{/if}}
   </div>
-  {{> sAlert}}
+  
 </body>
 
 <template name="navbar">
