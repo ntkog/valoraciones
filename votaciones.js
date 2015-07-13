@@ -9,11 +9,10 @@ Leaderboard = {};
 
 if (Meteor.isClient) {
 
-  Session.set("affinity" , "1");
   Accounts.onLoginFailure(function(err){
     Session.set('displayMessage', err.reason);
   });
-  
+
 }
 
 

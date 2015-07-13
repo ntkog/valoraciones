@@ -22,7 +22,11 @@
     </div>
   </div>
   <div class="container-fluid">
-    {{> leaderboard}}
+    {{#if isLogged }}
+      {{> leaderboard}}
+    {{else}}
+      {{> instructions }}
+    {{/if}}
   </div>
 </body>
 
@@ -40,22 +44,41 @@
 <template name="leaderboard">
    {{#if isLogged }}
     {{> navbar}}
+
     {{> sAlert}}
     {{> affinityFilter }}
+    {{> byTagFilter }}
     {{> reactiveTable class="table table-bordered table-hover" settings=settings }}  
    {{/if}}
 </template>
 
 <template name="thumbsUp">
-  <div class="containerFlex">
     <input class="vote" type="number" min="0" max="10" data-talk="{{ talkId }}">
-    <span><i data-talk="{{ talkId }}" class="increment fa fa-thumbs-o-up fa-3x"></i></span>
-  </div>
 </template>
 <template name="notRelated">
   <span><i class="notRelated fa fa-times-circle fa-3x"></i></span>
 </template>
 
 <template name="affinityFilter">
-    <button class="btn btn-primary" id="btnAffinity">{{ title }}</button>
+    <button class="btn btn-primary btn-sm" id="btnAffinity">{{ title }}</button>
+</template>
+<template name="byTagFilter">
+    <div class="containerFlex spaced">
+       {{# each tags }}
+          <div class="flex-item">
+            <button class="tag  btn btn-primary btn-sm byTag" data-current="{{ this }}">{{ this }}</button>
+          </div>
+      {{/each}}
+    </div>
+   
+</template>
+<template name="instructions">
+  <div class="containerFlex">
+    <div class="flex-item">
+      <h3 class="instructions">Preparado para una nueva edición de Codemotion ?</h3>
+      <p class="instructions">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Est, eveniet eum quisquam numquam dolore? Sint voluptatum sunt excepturi nesciunt, maxime ratione aliquam placeat inventore non corporis illum molestiae neque quos. Totam, numquam autem magnam odio quam atque quod maiores ab ea cumque iusto reiciendis voluptates blanditiis facere doloribus aut eius labore facilis ipsa a dolore quo. Itaque quibusdam, iure suscipit fugiat error vitae, velit nisi atque corrupti consectetur. Aliquid nesciunt maxime cupiditate vitae nisi culpa magnam quo suscipit porro veniam, ad facere, necessitatibus soluta ea, itaque optio ipsa officia facilis perferendis illum. Earum ea dolorem obcaecati consequatur! Nesciunt exercitationem reiciendis, beatae sapiente? Cumque nulla corporis dolores ex officiis corrupti alias, architecto, ea totam saepe dicta! Praesentium voluptatum porro, rerum ab vel, iure delectus ipsum eius minus id nulla, molestiae fuga. Dicta consequuntur temporibus et cum laboriosam aut eaque exercitationem, neque repellendus iste numquam earum vel voluptate asperiores assumenda quod blanditiis obcaecati rem totam? Itaque, facere fuga similique vel sit suscipit quidem magni, ipsam praesentium debitis beatae vitae architecto? Voluptates consequuntur eveniet maxime itaque sit saepe non dicta esse omnis sint! Eveniet esse quisquam pariatur soluta non, in cupiditate nam. Ut, quia a accusamus, fuga repudiandae illum labore minus recusandae ullam!</p>
+    </div>
+  </div>
+  
+  
 </template>

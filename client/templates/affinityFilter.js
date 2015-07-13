@@ -1,7 +1,6 @@
-Template.affinityFilter.created = function () {
-  this.filter = new ReactiveTable.Filter('affinity', ['affinity']);
-  this.filter.set("1");
-};
+Template.affinityFilter.created = function() {
+  this.filter =  new ReactiveTable.Filter('affinity', ['affinity']);
+}
 
 Template.affinityFilter.helpers({
   title : function() {
@@ -14,10 +13,13 @@ Template.affinityFilter.helpers({
 
 Template.affinityFilter.events({
   "click #btnAffinity" : function (e, tmpl) {
+    //
+    debugger;
     var lastValue = Template.instance().filter.get();
-
+    
     if (lastValue === "1") {
-      Template.instance().filter.set("0");
+      Template.instance().filter.set("");
+      
       
     } else {
        Template.instance().filter.set("1");

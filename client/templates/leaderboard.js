@@ -2,7 +2,7 @@ Template.leaderboard.events({
   'click .notRelated' : function() {
     Meteor.call("markAsNotRelated" , this._id, function (err) {
       if (err) {
-        console.error(err);
+        sAlert.error(err);
       }
     });
   }
@@ -17,11 +17,34 @@ Template.leaderboard.helpers({
           label : "Description",
           cellClass : "justify" 
         },
-        "tags",
-        "techs",
-        "Level",
-        "Type",
-        "Language",
+        { 
+          key : "Mytags",
+          label : "Tags",
+          hidden : true,
+          fn : function(value, object) {
+            return object.tags;
+          }
+        },
+        { 
+          key : "techs",
+          label : "Technologies",
+          hidden : true 
+        },
+        { 
+          key : "Level",
+          label : "Level",
+          hidden : true 
+        },
+        { 
+          key : "Type",
+          label : "Type",
+          hidden : true
+        },
+        { 
+          key : "Language",
+          label : "Language",
+          hidden : true 
+        },
         "Votes",
         {
           key: 'ThumbsUp',
@@ -87,10 +110,11 @@ Template.leaderboard.helpers({
     return {
       collection : Talks,
       rowsPerPage : 5,
-      showFilter : true,
-      showColumnToggles : true,
+      showFilter : false,
+      showColumnToggles : false,
       fields: fields,
-      filters : ['affinity']
+      filters : ['affinity','byTag'],
+      multiColumnSort : true
     }
   }
 });

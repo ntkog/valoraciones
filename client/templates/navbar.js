@@ -11,11 +11,11 @@ Template.navbar.events({
           complete: function(results) {
               
             if (results.data.errors) {
-              console.error("Something wrong with csv: ", results.data.errors);
+              sAlert.error("Something wrong with csv: ", results.data.errors);
             } else {
               Meteor.call("addTalks",results.data, function (err, result) {
                 if (err) {
-                  console.log(err);
+                  sAlert.error(err);
                 }
               });
             }
